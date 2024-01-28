@@ -1,0 +1,27 @@
+<nav class="nav">
+    <div>
+        <img src="/src/assets/Untitled.png">
+    </div>
+    <h2>myShop</h2>
+    <div class="nav-search">
+        <input type="text" placeholder="search"/>
+        <button>search</button>
+    </div>
+    <ul>
+        <li *ngIf="!isLoggedIn">
+            <a routerLink="login">Sign in</a>
+        </li>
+        <li *ngIf="isLoggedIn">
+            <h4>Welcome {{ username }}!</h4>
+        </li>
+        <li *ngIf="isLoggedIn">
+            <a href='javascript:void(0)' (click)="logout()">Sign out</a>
+        </li>
+        <li *ngIf="isLoggedIn">
+            <a href="#" style="padding-right: 15px;">Cart</a>
+        </li>
+        <li *ngIf="isLoggedIn">
+            <a routerLink="addproduct">Add Product</a>
+        </li>
+    </ul>
+</nav>
