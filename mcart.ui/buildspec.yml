@@ -9,6 +9,7 @@ phases:
   build:
     commands:
       - ng build
-  post_build:cd 
+
+  post_build:
     commands:
       - aws s3 sync mcart.ui/dist/ s3://mcart-nagp/
