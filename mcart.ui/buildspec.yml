@@ -6,10 +6,8 @@ phases:
     commands:
       - cd mcart.ui
       - npm install -g @angular/cli@15.0.0
-  build:
-    commands:
-      - ng build
-
-  post_build:
+       - ng build
+ 
+   post_build:
     commands:
       - aws s3 sync mcart.ui/dist/ s3://mcart-nagp/
