@@ -1,0 +1,13 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - npm install -g @angular/cli@15.0.0
+  build:
+    commands:
+      - ng build --configuration=prod --build-optimizer
+  post_build:
+    commands:
+      - aws s3 sync dist/ s3://mcart-nagp --delete
