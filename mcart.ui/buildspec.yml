@@ -9,6 +9,6 @@ phases:
   build:
     commands:
       - ng build
-  post_build:
+  post_build:cd 
     commands:
-      - aws s3 sync dist/ s3://mcart-nagp --delete
+      - aws s3 sync mcart.ui/dist/ s3://mcart-nagp --delete
