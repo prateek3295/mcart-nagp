@@ -8,7 +8,7 @@ phases:
       - npm install -g @angular/cli@15.0.0
   build:
     commands:
-      - cd mcart.ui
+      - ls
       - ng build
 
   post_build:
