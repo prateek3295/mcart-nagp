@@ -4,10 +4,11 @@ phases:
     runtime-versions:
       nodejs: 16
     commands:
+      - cd mcart.ui
       - npm install -g @angular/cli@15.0.0
   build:
     commands:
-      - ng build --configuration=prod --build-optimizer
+      - ng build
   post_build:
     commands:
       - aws s3 sync dist/ s3://mcart-nagp --delete
