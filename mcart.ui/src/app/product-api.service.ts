@@ -8,7 +8,7 @@ import { Product } from './model/product';
 })
 export class ProductApiService {
 
-  private apiUrl = 'https://localhost:58224/api/v1/catalog';
+  private apiUrl = 'http://catalog-lb-1942829953.us-east-1.elb.amazonaws.com/api/v1/catalog';
 
   constructor(private http: HttpClient) {}
 
