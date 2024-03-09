@@ -1,17 +1,30 @@
+<!-- product-list.component.html -->
 
-<!-- product.component.html -->
 <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-4" *ngFor="let product of products">
-        <div class="card mb-4">
-          <img [src]="product.imagePreSignedUrl" class="card-img-top"  alt="{{ product.name }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.description }}</p>
-            <p class="card-text">{{ product.price | currency: 'USD' }}</p>
+  <div class="row">
+    <div class="col-md-3">
+      <!-- Include the filter component here with custom styles -->
+      <app-product-filter></app-product-filter>
+    </div>
+
+    <div class="col-md-9">
+      <div class="row">
+        <!-- Loop through filtered products instead of all products -->
+        <div class="col-12 col-sm-6 col-md-4" *ngFor="let product of products">
+          <div class="product-card card mb-4" (click)="onCardClick(product)"> 
+            <img [src]="product.imagePreSignedUrl" class="card-img-top" alt="{{ product.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+              <p class="card-text price">{{ product.price }}$</p>
+              <!-- Add a button or any additional content here if needed -->
+              <!-- Example button: -->
+              <button class="btn">Add to Cart</button>
+            </div>
           </div>
         </div>
+        
       </div>
     </div>
   </div>
-  
+</div>

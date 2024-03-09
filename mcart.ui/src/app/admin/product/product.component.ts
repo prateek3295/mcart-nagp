@@ -8,13 +8,21 @@ import { catchError, of } from 'rxjs';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
+  newcategories: string = '';
   newProduct = {
     name: '',
     category: '',
     summary: '',
+    brand:'',
     price:'',
-    imageUrl: '' // This property will store the S3 URL of the uploaded image
+    imageUrl: '',
+    categories: [] as string[],
+    rating:0,
+    inStock:false
   };
+
+   // Define an array for star ratings
+   stars: number[] = [1, 2, 3, 4, 5];
 
   constructor(private productService: ProductApiService) {}
 
@@ -45,6 +53,7 @@ export class ProductComponent {
   }
   
   createProduct() {
+    this.newProduct.categories = this.newcategories.split(',').map(category => category.trim());
     // Perform logic to save the new product, including the S3 URL, to the database
     this.productService.createProduct(this.newProduct).subscribe(
       () => {
@@ -54,5 +63,11 @@ export class ProductComponent {
         console.error('Error creating product:');
       }
     );
+  }
+
+ 
+  // Method to set the rating based on the selected star
+  setRating(rating: number) {
+    this.newProduct.rating = rating;
   }
 }

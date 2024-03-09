@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5" style="padding: 120px;">
     <h2>Create Product</h2>
     <form (submit)="createProduct()" class="needs-validation" novalidate>
       <div class="mb-3">
@@ -10,13 +10,19 @@
       </div>
   
       <div class="mb-3">
-        <label for="productCategory" class="form-label">Category:</label>
+        <label for="productCategory" class="form-label">Main Category:</label>
         <input type="text" id="productCategory" class="form-control" [(ngModel)]="newProduct.category" name="productCategory" required>
         <div class="invalid-feedback">
-          Please enter a product category.
+          Please enter a main category.
         </div>
       </div>
-  
+      <div class="mb-3">
+        <label for="productCategories" class="form-label">Categories (comma-separated):</label>
+        <input type="text" id="productCategories" class="form-control" [(ngModel)]="newcategories" name="newcategories" required>
+        <div class="invalid-feedback">
+          Please enter a main category.
+        </div>
+      </div>
       <div class="mb-3">
         <label for="productColor" class="form-label">Summary:</label>
         <input type="text" id="productColor" class="form-control" [(ngModel)]="newProduct.summary" name="summary" required>
@@ -32,7 +38,21 @@
           Please enter a product price.
         </div>
       </div>
-
+      <div class="mb-3">
+        <label for="productBrand" class="form-label">Brand:</label>
+        <input type="text" id="productBrand" class="form-control" [(ngModel)]="newProduct.brand" name="brand" required>
+        <div class="invalid-feedback">
+          Please enter a product brand.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label>Rating:</label>
+    <div class="rating-container">
+      <span *ngFor="let star of stars" (click)="setRating(star)">
+        <i class="fas fa-star" [style.color]="star <= newProduct.rating ? 'gold' : 'gray'"></i>
+      </span>
+    </div>
+      </div>
       <div class="mb-3">
         <label for="productImage" class="form-label">Image Upload:</label>
         <input type="file" id="productImage" onclick="this.value = null" class="form-control" (change)="onFileSelected($event)" accept="image/*" required>
@@ -40,8 +60,10 @@
           Please select an image file.
         </div>
       </div>
-
-      
+      <div class="mb-3">
+        <label for="inStock" class="form-label">In Stock:</label>
+        <input type="checkbox" id="inStock" [(ngModel)]="newProduct.inStock" style="margin-left:50px;">
+       </div>
   
       <button type="submit" [disabled] = "newProduct.imageUrl.length == 0" class="btn btn-primary">Create Product</button>
     </form>

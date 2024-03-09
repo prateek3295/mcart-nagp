@@ -8,7 +8,7 @@ import { Product } from './model/product';
 })
 export class ProductApiService {
 
-  private apiUrl = 'http://catalog-lb-1942829953.us-east-1.elb.amazonaws.com/api/v1/catalog';
+  private apiUrl = "http://catalog-lb-945085276.us-east-1.elb.amazonaws.com/api/v1/catalog" ;//'http://catalog-lb-1942829953.us-east-1.elb.amazonaws.com/api/v1/catalog';
 
   constructor(private http: HttpClient) {}
 
@@ -35,6 +35,11 @@ export class ProductApiService {
       return throwError(error); //throwError is deprecated
       // return new Error(error);
     }));
+  }
+
+  getProductDetails(productId: string): Observable<any> {
+    const url = `${this.apiUrl}/${productId}`;
+    return this.http.get<any>(url);
   }
 
 }

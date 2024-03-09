@@ -24,6 +24,7 @@ export class HeaderComponent {
       switch (payload.event) {
         case 'signedIn':
           this.isLoggedIn = true;
+          fetchUserAttributes();
           break;
         case 'signedOut':
           this.isLoggedIn = false;

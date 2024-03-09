@@ -1,27 +1,43 @@
 <nav class="nav">
     <div>
-        <img src="/src/assets/Untitled.png">
+      <img src="/src/assets/Untitled.png" alt="Logo">
     </div>
-    <h2>myShop</h2>
+    <h2 style="display: none;">myShop</h2>
     <div class="nav-search">
-        <input type="text" placeholder="search"/>
-        <button>search</button>
+      <input type="text" placeholder="Search" style="padding: 8px;">
+      <button>
+        <!-- Replace 'fa-search' with the actual Font Awesome icon class for search -->
+        <i class="fas fa-search"></i>
+      </button>
     </div>
     <ul>
-        <li *ngIf="!isLoggedIn">
-            <a routerLink="login">Sign in</a>
-        </li>
-        <li *ngIf="isLoggedIn">
-            <h4>Welcome {{ username }}!</h4>
-        </li>
-        <li *ngIf="isLoggedIn">
-            <a href='javascript:void(0)' (click)="logout()">Sign out</a>
-        </li>
-        <li *ngIf="isLoggedIn">
-            <a href="#" style="padding-right: 15px;">Cart</a>
-        </li>
-        <li *ngIf="isLoggedIn">
-            <a routerLink="addproduct">Add Product</a>
-        </li>
+      <li *ngIf="!isLoggedIn">
+        <a routerLink="login">
+          <!-- Replace 'fa-sign-in-alt' with the actual Font Awesome icon class for sign in -->
+          <i class="fas fa-sign-in-alt"></i> Sign in
+        </a>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <h4>Welcome {{ username }}!</h4>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <a href='javascript:void(0)' (click)="logout()">
+          <!-- Replace 'fa-sign-out-alt' with the actual Font Awesome icon class for sign out -->
+          <i class="fas fa-sign-out-alt"></i> Sign out
+        </a>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <a href="#">
+          <!-- Replace 'fa-shopping-cart' with the actual Font Awesome icon class for cart -->
+          <i class="fas fa-shopping-cart"></i> Cart
+        </a>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <a routerLink="addproduct">
+          <!-- Replace 'fa-plus' with the actual Font Awesome icon class for add product -->
+          <i class="fas fa-plus"></i> Add Product
+        </a>
+      </li>
     </ul>
-</nav>
+  </nav>
+  

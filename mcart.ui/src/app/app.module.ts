@@ -9,6 +9,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProductComponent } from './admin/product/product.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductlistComponent } from './productlist/productlist.component';
+import { ProductdetailsComponent } from './components/productdetails/productdetails.component';
+import { CarouselitemsComponent } from './components/carouselitems/carouselitems.component';
+import { ProductFilterComponent } from './component/product-filter/product-filter.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { ProductlistComponent } from './productlist/productlist.component';
     LoginComponent,
     HeaderComponent,
     ProductComponent,
-    ProductlistComponent
+    ProductlistComponent,
+    ProductdetailsComponent,
+    CarouselitemsComponent,
+    ProductFilterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +34,6 @@ import { ProductlistComponent } from './productlist/productlist.component';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], 
 })
 export class AppModule { }
