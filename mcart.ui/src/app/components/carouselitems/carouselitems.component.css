@@ -1,0 +1,60 @@
+.my-custom-carousel-container {
+    position: relative;
+    width: 100%;
+    max-height: 600px; /* Set a maximum height for the carousel */
+    overflow: hidden;
+    padding-top: 100px;
+  }
+  
+  .carousel-items {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+  
+  .carousel-item {
+    position: relative;
+    flex: 0 0 auto;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    max-height: 100%; /* Set a maximum height for the images */
+    object-fit: cover;
+  }
+  
+  .go-to-collection-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #46515e;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 2; /* Ensure the button is above the image */
+  }
+  
+  .nav-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .active {
+    border: 2px solid #007bff;
+  }
+  
