@@ -1,0 +1,34 @@
+<!-- product-filters.component.html -->
+
+<div class="filter-container">
+    <h3>Department</h3>
+    <div class="filter-group">
+      <input type="checkbox" id="clothing" [(ngModel)]="filters.departmentClothing" name="departmentClothing">
+      <label for="clothing">Clothing</label>
+    </div>
+    <div class="filter-group">
+      <input type="checkbox" id="electronics" [(ngModel)]="filters.departmentElectronics" name="departmentElectronics">
+      <label for="electronics">Electronics</label>
+    </div>
+    <div class="filter-group">
+      <input type="checkbox" id="books" [(ngModel)]="filters.departmentBooks" name="departmentBooks">
+      <label for="books">Books</label>
+    </div>
+  
+    <!-- Add more filter categories as needed -->
+  
+    <h3>Brand</h3>
+    <div class="filter-group">
+      <input type="checkbox" id="nike" [(ngModel)]="filters.brandNike" name="brandNike">
+      <label for="nike">Nike</label>
+    </div>
+    <div class="filter-group">
+      <input type="checkbox" id="adidas" [(ngModel)]="filters.brandAdidas" name="brandAdidas">
+      <label for="adidas">Adidas</label>
+    </div>
+  
+    <!-- Add more brand options as needed -->
+  
+    <!-- Other filter categories can be added similarly -->
+  </div>
+  

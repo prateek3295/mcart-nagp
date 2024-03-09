@@ -1,0 +1,19 @@
+/* product-filters.component.css */
+
+.filter-container {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+  }
+  
+  .filter-group {
+    margin-bottom: 8px;
+  }
+  
+  .filter-group label {
+    margin-left: 5px;
+  }
+  
+  /* Add more styles as needed */
+  

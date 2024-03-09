@@ -1,0 +1,53 @@
+/* styles.css or your custom CSS file */
+
+.footer {
+    background-color: #087A91;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    height: 15%; /* Set a percentage-based height for the footer */
+    min-height: 100px; /* Set a minimum height for the footer */
+    max-height: 200px; /* Set a maximum height for the footer */
+    margin-top: 100px;
+  }
+  
+  .footer h5 {
+    color: aliceblue;
+  }
+
+  .footer a {
+    color: aliceblue;
+  }
+  
+  .footer p {
+    margin-bottom: 10px;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer ul li {
+    margin-bottom: 8px;
+  }
+  
+  .social-icons li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .social-icons a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+  
+  .social-icons i {
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .social-icons a:hover i {
+    color: #febd69;
+  }
+  
