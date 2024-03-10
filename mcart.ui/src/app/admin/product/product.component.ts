@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductApiService } from 'src/app/product-api.service';
 import { FormsModule } from '@angular/forms';
 import { catchError, of } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -24,7 +25,7 @@ export class ProductComponent {
    // Define an array for star ratings
    stars: number[] = [1, 2, 3, 4, 5];
 
-  constructor(private productService: ProductApiService) {}
+  constructor(private productService: ProductApiService, private router: Router) {}
 
   onFileSelected(event: any) {
     console.log("file selected");
@@ -59,6 +60,7 @@ export class ProductComponent {
     this.productService.createProduct(this.newProduct).subscribe(
       () => {
         console.log('Product created successfully.');
+        this.router.navigateByUrl("/products")
       },
       () => {
         console.error('Error creating product:');

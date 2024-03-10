@@ -10,7 +10,7 @@
       <div class="row">
         <!-- Loop through filtered products instead of all products -->
         <div class="col-12 col-sm-6 col-md-4" *ngFor="let product of filteredProducts">
-          <div class="product-card card mb-4" (click)="onCardClick(product)"> 
+          <div class="product-card card mb-4" (click)="onCardClick(product)" [class.disabled]="!product.inStock"> 
             <img [src]="product.imagePreSignedUrl" class="card-img-top" alt="{{ product.name }}">
             <div class="card-body">
               <h5 class="card-title">{{ product.name }}</h5>

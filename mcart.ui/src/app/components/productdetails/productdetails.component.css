@@ -57,5 +57,11 @@
   margin-right: 5px; /* Adjust the spacing between stars as needed */
 }
 
+.out-of-stock {
+  color: red; /* You can customize the color or any other styles */
+  font-weight: bold;
+  /* Additional styles for out-of-stock message */
+}
+
 
 
