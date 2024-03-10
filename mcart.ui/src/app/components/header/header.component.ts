@@ -62,4 +62,8 @@ logout(){
     signOut();
   }
 
+  searchProducts(){
+
+  }
+
 }

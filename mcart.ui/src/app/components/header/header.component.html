@@ -1,5 +1,5 @@
 
-  <nav class="nav main-content" style="margin-top: 0;">
+  <nav class="nav" style="margin-top: 0;">
     <div [routerLink]="'/products'" class="cart-container" style="cursor: pointer;">
       <span class="cart-text">My Cart</span>
       <i class="fas fa-shopping-cart fa-lg"></i>
@@ -7,7 +7,7 @@
     <h2 style="display: none;">myShop</h2>
     <div class="nav-search">
       <input type="text" placeholder="Search" style="padding: 8px;">
-      <button>
+      <button (onclick)="searchProducts()">
         <!-- Replace 'fa-search' with the actual Font Awesome icon class for search -->
         <i class="fas fa-search"></i>
       </button>
