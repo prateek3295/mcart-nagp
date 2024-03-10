@@ -1,21 +1,17 @@
 <div class="filter-container">
   <h3>Gender</h3>
   <div class="filter-group">
-    <input type="radio" id="men" [(ngModel)]="selectedGender" name="gender" value="men" (change)="emitFilterChange()">
+    <input type="radio" id="men" [(ngModel)]="genderFilter" [value]="'Men'" (change)="applyFilters()">
     <label for="men">Men</label>
   </div>
   <div class="filter-group">
-    <input type="radio" id="women" [(ngModel)]="selectedGender" name="gender" value="women" (change)="emitFilterChange()">
+    <input type="radio" id="women" [(ngModel)]="genderFilter" [value]="'Women'" (change)="applyFilters()">
     <label for="women">Women</label>
   </div>
+
   <h3>Brand</h3>
   <div class="filter-group" *ngFor="let brand of brands">
-    <input type="checkbox" [id]="brand" [(ngModel)]="brandCheckboxes[brand]" name="selectedBrands" (change)="emitFilterChange()">
+    <input type="checkbox" [id]="brand" [(ngModel)]="brandCheckboxes[brand]" (change)="applyFilters()">
     <label [for]="brand">{{ brand }}</label>
   </div>
-  <!-- Add more filter categories as needed -->
 </div>
-
-
-
-

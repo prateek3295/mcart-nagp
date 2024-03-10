@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-3">
       <!-- Include the filter component here with custom styles -->
-      <app-product-filter (filtersChanged)="applyFilters($event)"></app-product-filter>
+      <app-product-filter></app-product-filter>
     </div>
 
     <div class="col-md-9">
@@ -15,7 +15,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ product.name }}</h5>
               <p class="card-text">{{ product.description }}</p>
-              <p class="card-text price">{{ product.price }}$</p>
+            <p class="card-text price">{{ product.price }}$</p>
               <div class="star-rating">
                 <ng-container *ngFor="let index of [0, 1, 2, 3, 4]">
                   <div [class.golden]="isFilledStar(index, product)" [class.gray]="!isFilledStar(index, product)">

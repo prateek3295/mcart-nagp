@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from '../model/product';
 import { ProductApiService } from '../product-api.service';
 import { Router } from '@angular/router';
+import { FilterService } from '../services/filterservice.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-productlist',
@@ -18,9 +20,16 @@ export class ProductlistComponent {
   isLoading = false;
   error!:string;
   searchKeyword!:string;
-  constructor(private productService:ProductApiService, private route:ActivatedRoute, private router: Router){
+  filter: { gender: string, brands: string[] } = { gender: '', brands: [] };
+  constructor(private productService:ProductApiService, private route:ActivatedRoute, private router: Router, private filterService: FilterService){
   }
   ngOnInit(): void {
+    this.filterService.getFilter().subscribe(newFilter => {
+      this.filter = newFilter;
+      // Apply filters when the filter changes
+      this.applyFilters();
+    });
+
     this.getResults();
   }
 
@@ -45,13 +54,6 @@ export class ProductlistComponent {
       return index < product.rating;
     }
 
-    applyFilters(filters: { gender: string, selectedBrands: string[] }) {
-      console.log(this.filters.selectedBrands);
-      // Update the selected gender and apply filters
-      this.selectedGender = filters.gender;
-      this.filterProducts(filters.selectedBrands);
-    }
-
     filterProducts(selectedBrands: string[]) {
       // Apply filters to the products
       this.filteredProducts = this.products
@@ -69,6 +71,29 @@ export class ProductlistComponent {
           return true;
         });
     }
+
+    applyFilters() {
+      // Apply filters to update the list of filtered products
+      this.filteredProducts = this.products
+        .filter(product => {
+          // Apply gender filter
+          console.log("filter is : " +  this.filter.brands , this.filter.gender);
+          if (this.filter.gender && product.category.toLowerCase() !== this.filter.gender.toLowerCase()) {
+            return false;
+          }
+  
+          // Apply brand filter
+          if (this.filter.brands && this.filter.brands.length > 0 && !this.filter.brands.includes(product.brand)) {
+            return false;
+          }
+  
+          return true;
+        });
+    }
+    
+    
+    
+    
   }
 
 

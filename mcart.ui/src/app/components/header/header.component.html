@@ -1,8 +1,9 @@
-<nav class="nav">
-  <div class="cart-container">
-    <span class="cart-text">My Cart</span>
-    <i class="fas fa-shopping-cart fa-lg"></i>
-  </div>
+
+  <nav class="nav main-content" style="margin-top: 0;">
+    <div [routerLink]="'/products'" class="cart-container" style="cursor: pointer;">
+      <span class="cart-text">My Cart</span>
+      <i class="fas fa-shopping-cart fa-lg"></i>
+    </div>
     <h2 style="display: none;">myShop</h2>
     <div class="nav-search">
       <input type="text" placeholder="Search" style="padding: 8px;">
@@ -22,12 +23,6 @@
         <h4>Welcome {{ username }}!</h4>
       </li>
       <li *ngIf="isLoggedIn">
-        <a href='javascript:void(0)' (click)="logout()">
-          <!-- Replace 'fa-sign-out-alt' with the actual Font Awesome icon class for sign out -->
-          <i class="fas fa-sign-out-alt"></i> Sign out
-        </a>
-      </li>
-      <li *ngIf="isLoggedIn">
         <a href="#">
           <!-- Replace 'fa-shopping-cart' with the actual Font Awesome icon class for cart -->
           <i class="fas fa-shopping-cart"></i> Cart
@@ -39,6 +34,11 @@
           <i class="fas fa-plus"></i> Add Product
         </a>
       </li>
+      <li *ngIf="isLoggedIn">
+        <a href='javascript:void(0)' (click)="logout()">
+          <!-- Replace 'fa-sign-out-alt' with the actual Font Awesome icon class for sign out -->
+          <i class="fas fa-sign-out-alt"></i> Sign out
+        </a>
+      </li>
     </ul>
   </nav>
-  

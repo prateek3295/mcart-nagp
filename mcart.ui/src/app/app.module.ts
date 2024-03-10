@@ -13,6 +13,7 @@ import { ProductdetailsComponent } from './components/productdetails/productdeta
 import { CarouselitemsComponent } from './components/carouselitems/carouselitems.component';
 import { ProductFilterComponent } from './component/product-filter/product-filter.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { FilterService } from './services/filterservice.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { FooterComponent } from './component/footer/footer.component';
     AmplifyAuthenticatorModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [FilterService],
   bootstrap: [AppComponent], 
 })
 export class AppModule { }

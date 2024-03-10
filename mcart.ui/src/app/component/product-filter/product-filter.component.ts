@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductApiService } from 'src/app/product-api.service';
+import { FilterService } from 'src/app/services/filterservice.service';
 
 @Component({
   selector: 'app-product-filter',
@@ -8,15 +9,11 @@ import { ProductApiService } from 'src/app/product-api.service';
 })
 export class ProductFilterComponent {
   @Input() brands: string[] = [];
-  @Output() filtersChanged: EventEmitter<{ gender: string, selectedBrands: string[] }> = new EventEmitter();
+  
+  genderFilter: string = ''; // Variable to hold the selected gender
+  brandCheckboxes: { [key: string]: boolean } = {};
 
-  selectedGender: string = '';
-  brandCheckboxes: { [brand: string]: boolean } = {};
-
-  constructor(private productService: ProductApiService) { }
-
-  @Output() filterChange = new EventEmitter<any>();
-
+  constructor(private productService: ProductApiService, private filterService: FilterService) { }
 
 
   ngOnInit() {
@@ -30,9 +27,9 @@ export class ProductFilterComponent {
     this.productService.getUniqueBrands().subscribe(
       (data) => {
         this.brands = data;
-        this.brands.forEach(brand => this.brandCheckboxes[brand] = false);
-        // Emit the initial filters
-        this.emitFilterChange();
+        this.brands.forEach(brand => {
+          this.brandCheckboxes[brand] = false;
+        });
       },
       (error) => {
         console.error('Error fetching brand list:', error);
@@ -40,10 +37,15 @@ export class ProductFilterComponent {
     );
   }
 
-  emitFilterChange() {
+  applyFilters() {
+    // Collect selected brands
     const selectedBrands = Object.keys(this.brandCheckboxes).filter(brand => this.brandCheckboxes[brand]);
-    console.log(selectedBrands);
-    this.filtersChanged.emit({ gender: this.selectedGender, selectedBrands });
+
+    // Emit the filter to the FilterService
+    this.filterService.setFilter({
+      gender: this.genderFilter,
+      brands: selectedBrands
+    });
   }
 
 }

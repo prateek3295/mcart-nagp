@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Product } from 'src/app/model/product';
-import { ProductApiService } from 'src/app/product-api.service';
+import { filter } from 'rxjs';
+import { FilterService } from 'src/app/services/filterservice.service';
+
+interface CarouselItem {
+  imageUrl: string;
+  description: string;
+}
 
 @Component({
   selector: 'app-carouselitems',
@@ -9,16 +14,15 @@ import { ProductApiService } from 'src/app/product-api.service';
   styleUrls: ['./carouselitems.component.css']
 })
 
+
 export class CarouselitemsComponent implements OnInit{
   showCarousel: boolean = true;
-
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
-  images: string[] = [
-    'assets/100.jpg',
-    'assets/301.jpg',
-  ];
-
   currentImageIndex = 0;
+  items: CarouselItem[] = [
+    { imageUrl: 'assets/men.jpg', description: 'Men' },
+    { imageUrl: 'assets/women.jpg', description: 'Women' }
+  ];
+  constructor(private router: Router, private filterService: FilterService) {}
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
@@ -37,19 +41,21 @@ export class CarouselitemsComponent implements OnInit{
   startCarousel(): void {
     setInterval(() => {
       this.nextImage();
-    }, 3000); // Change the duration as needed (in milliseconds)
+    }, 5000); // Change the duration as needed (in milliseconds)
   }
 
   nextImage(): void {
-    this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
+    this.currentImageIndex = (this.currentImageIndex + 1) % this.items.length;
+    console.log('Next Image URL:', this.items[this.currentImageIndex].imageUrl);
+  }
+  
+  onImageClick(category: string): void{
+    this.filterService.setFilter({
+      gender: category,
+      brands:[]
+    });
   }
 
-  prevImage(): void {
-    this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
-  }
 
-  goToCollection():void{
-
-  }
 }
 

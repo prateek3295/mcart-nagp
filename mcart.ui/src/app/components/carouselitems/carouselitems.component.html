@@ -1,10 +1,8 @@
-<div class="my-custom-carousel-container" *ngIf="showCarousel">
+<div class="my-custom-carousel-container" *ngIf="showCarousel" style="margin-top: 80px; z-index: 1;">
     <div class="carousel-items">
-      <div *ngFor="let image of images; let i = index" class="carousel-item" [class.active]="i === currentImageIndex">
-        <img [src]="image" alt="Image {{ i + 1 }}" class="carousel-image">
-        <button class="go-to-collection-button" (click)="goToCollection()">Go to Collection</button>
+      <div *ngFor="let image of items; let i = index" class="carousel-item" [class.active]="i === currentImageIndex" (click)="onImageClick(image.description)">
+        <img [src]="image.imageUrl" alt="Image {{ i + 1 }}" class="carousel-image">
       </div>
     </div>
-    <button (click)="prevImage()" class="nav-button">&#8249;</button>
-    <button (click)="nextImage()" class="nav-button">&#8250;</button>
+
   </div>
