@@ -15,7 +15,7 @@ export class ProductApiService {
   uploadImage(file: File): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post(`${this.apiUrl}/uploadImageToS3`, formData, { responseType: 'text' });
+    return this.http.post(`${this.apiUrl}uploadImageToS3`, formData, { responseType: 'text' });
   }
 
   createProduct(product: any): Observable<any> {
@@ -40,12 +40,12 @@ export class ProductApiService {
 
    // Fetch unique brands from the backend
    getUniqueBrands(): Observable<string[]> {
-    const url = `${this.apiUrl}/GetProductBrands`; // Adjust the endpoint accordingly
+    const url = `${this.apiUrl}GetProductBrands`; // Adjust the endpoint accordingly
     return this.http.get<string[]>(url);
   }
 
   getProductDetails(productId: string): Observable<any> {
-    const url = `${this.apiUrl}/${productId}`;
+    const url = `${this.apiUrl}${productId}`;
     return this.http.get<any>(url);
   }
 
