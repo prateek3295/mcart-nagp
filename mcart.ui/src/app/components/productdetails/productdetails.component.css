@@ -39,3 +39,23 @@
 .zoom-icon:hover {
   color: #45A049; /* Darker green color on hover */
 }
+
+
+
+.star-rating {
+  font-size: 24px; /* Adjust the font size as needed */
+  display: flex;
+}
+
+.golden {
+  color: #FFD700; /* Set the color to golden (hex code for gold) */
+  margin-right: 5px; /* Adjust the spacing between stars as needed */
+}
+
+.gray {
+  color: #808080; /* Set the color to gray (hex code for gray) */
+  margin-right: 5px; /* Adjust the spacing between stars as needed */
+}
+
+
+

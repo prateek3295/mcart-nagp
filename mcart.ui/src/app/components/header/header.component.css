@@ -51,3 +51,16 @@ ul li a {
   text-decoration: none;
   color: aliceblue;
 }
+
+.cart-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row; /* Set the direction to row */
+}
+
+.cart-container .cart-text {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.2em; /* Adjust the font size as needed */
+  margin-right: 10px; /* Adjust the margin between text and icon as needed */
+}

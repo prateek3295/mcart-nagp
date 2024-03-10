@@ -84,4 +84,32 @@
   transition: background-color 0.3s ease-in-out;
 }
 
+.golden {
+  color: gold;
+}
+
+.gray {
+  color: grey;
+}
+/* Add styles for the star-rating container */
+.star-rating {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+/* Add some spacing between stars for better visual appearance */
+.star-rating i {
+  margin-right: 5px;
+  display: flex;
+}
+
+.out-of-stock {
+  color: red; /* Red color for out of stock */
+  font-weight: bold;
+}
+
+.in-stock {
+  color: green; /* Green color for "In Stock" message */
+  font-weight: bold;
+}
 

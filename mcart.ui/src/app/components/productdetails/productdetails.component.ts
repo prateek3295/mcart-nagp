@@ -53,4 +53,19 @@ export class ProductdetailsComponent {
     zoomedImage.style.transform = `scale(${this.zoomLevel})`;
     zoomedImage.style.transformOrigin = 'center center';  // Set the transform origin to the center
   }
+
+  getStarRatingHtml(): string {
+    const maxRating = 5;
+    const filledStars = this.product.rating || 0;
+    const emptyStars = maxRating - filledStars;
+
+    const html = Array(filledStars).fill('<i class="fas fa-star"></i>').join('') +
+      Array(emptyStars).fill('<i class="far fa-star"></i>').join('');
+    console.log(html);
+    return html;
+  }
+
+  isFilledStar(index: number): boolean {
+    return index < this.product.rating;
+  }
 }

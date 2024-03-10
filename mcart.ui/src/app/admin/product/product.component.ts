@@ -53,6 +53,7 @@ export class ProductComponent {
   }
   
   createProduct() {
+    debugger;
     this.newProduct.categories = this.newcategories.split(',').map(category => category.trim());
     // Perform logic to save the new product, including the S3 URL, to the database
     this.productService.createProduct(this.newProduct).subscribe(

@@ -62,9 +62,9 @@
       </div>
       <div class="mb-3">
         <label for="inStock" class="form-label">In Stock:</label>
-        <input type="checkbox" id="inStock" [(ngModel)]="newProduct.inStock" style="margin-left:50px;">
+        <input type="checkbox" id="inStock" [(ngModel)]="newProduct.inStock" name="inStock" style="margin-left:50px;">
        </div>
-  
+       
       <button type="submit" [disabled] = "newProduct.imageUrl.length == 0" class="btn btn-primary">Create Product</button>
     </form>
   </div>

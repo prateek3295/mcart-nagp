@@ -8,6 +8,9 @@ export interface Product {
     imagePreSignedUrl: string;
     summary: string;
     price: number;
+    rating: number;
+    inStock: boolean;
+    brand: string;
 }
 
 

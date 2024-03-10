@@ -1,29 +1,34 @@
-<!-- product-list.component.html -->
 
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-3">
       <!-- Include the filter component here with custom styles -->
-      <app-product-filter></app-product-filter>
+      <app-product-filter (filtersChanged)="applyFilters($event)"></app-product-filter>
     </div>
 
     <div class="col-md-9">
       <div class="row">
         <!-- Loop through filtered products instead of all products -->
-        <div class="col-12 col-sm-6 col-md-4" *ngFor="let product of products">
+        <div class="col-12 col-sm-6 col-md-4" *ngFor="let product of filteredProducts">
           <div class="product-card card mb-4" (click)="onCardClick(product)"> 
             <img [src]="product.imagePreSignedUrl" class="card-img-top" alt="{{ product.name }}">
             <div class="card-body">
               <h5 class="card-title">{{ product.name }}</h5>
               <p class="card-text">{{ product.description }}</p>
               <p class="card-text price">{{ product.price }}$</p>
-              <!-- Add a button or any additional content here if needed -->
-              <!-- Example button: -->
-              <button class="btn">Add to Cart</button>
+              <div class="star-rating">
+                <ng-container *ngFor="let index of [0, 1, 2, 3, 4]">
+                  <div [class.golden]="isFilledStar(index, product)" [class.gray]="!isFilledStar(index, product)">
+                    <i class="fas fa-star"></i>
+                  </div>
+                </ng-container>
+              </div>
+              <div *ngIf="product.inStock; else outOfStock" class="in-stock">In Stock</div>
+    <ng-template #outOfStock><div class="out-of-stock">Out of Stock</div></ng-template>
+              <button class="btn" [disabled]="!product.inStock">Add to Cart</button>
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   </div>

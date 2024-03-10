@@ -1,14 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Product } from './model/product';
-
+import { fetchAuthSession } from 'aws-amplify/auth';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductApiService {
 
-  private apiUrl = "http://catalog-lb-945085276.us-east-1.elb.amazonaws.com/api/v1/catalog" ;//'http://catalog-lb-1942829953.us-east-1.elb.amazonaws.com/api/v1/catalog';
+  private apiUrl = "https://localhost:58224/api/v1/catalog" ;//'http://catalog-lb-1942829953.us-east-1.elb.amazonaws.com/api/v1/catalog';
 
   constructor(private http: HttpClient) {}
 
@@ -19,6 +19,7 @@ export class ProductApiService {
   }
 
   createProduct(product: any): Observable<any> {
+  
     return this.http.post(`${this.apiUrl}`, product);
   }
 
@@ -35,6 +36,12 @@ export class ProductApiService {
       return throwError(error); //throwError is deprecated
       // return new Error(error);
     }));
+  }
+
+   // Fetch unique brands from the backend
+   getUniqueBrands(): Observable<string[]> {
+    const url = `${this.apiUrl}/GetProductBrands`; // Adjust the endpoint accordingly
+    return this.http.get<string[]>(url);
   }
 
   getProductDetails(productId: string): Observable<any> {

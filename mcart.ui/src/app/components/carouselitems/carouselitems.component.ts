@@ -42,7 +42,6 @@ export class CarouselitemsComponent implements OnInit{
 
   nextImage(): void {
     this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
-    console.log('Next Image URL:', this.images[this.currentImageIndex]);
   }
 
   prevImage(): void {
