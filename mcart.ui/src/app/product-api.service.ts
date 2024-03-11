@@ -8,7 +8,7 @@ import { fetchAuthSession } from 'aws-amplify/auth';
 })
 export class ProductApiService {
 
-  private apiUrl = "http://catalog-lb-563999524.us-east-1.elb.amazonaws.com/api/v1/catalog/" ;
+  private apiUrl = "https://localhost:58224/api/v1/catalog/" //"http://catalog-lb-563999524.us-east-1.elb.amazonaws.com/api/v1/catalog/" ;
 
   constructor(private http: HttpClient) {}
 
@@ -38,9 +38,24 @@ export class ProductApiService {
     }));
   }
 
+  searchProducts(searchQuery: string):Observable<Product[]|any>{
+    return this.http.get<{[key:string]:Product}>(`${this.apiUrl}search?searchquery=${searchQuery}`).pipe(map((data)=>{
+      let newProducts:Product[]=[];
+      for(const key in data){
+        newProducts.push({...data[key]})
+        console.log(data[key]);
+      }
+      return newProducts;
+    }),
+    catchError((error)=>{
+      return throwError(error); //throwError is deprecated
+      // return new Error(error);
+    }));
+  }
+
    // Fetch unique brands from the backend
-   getUniqueBrands(): Observable<string[]> {
-    const url = `${this.apiUrl}GetProductBrands`; // Adjust the endpoint accordingly
+   getUniqueBrands(searchQuery:string): Observable<string[]> {
+    const url = `${this.apiUrl}GetProductBrands?searchquery=${searchQuery}`; // Adjust the endpoint accordingly
     return this.http.get<string[]>(url);
   }
 

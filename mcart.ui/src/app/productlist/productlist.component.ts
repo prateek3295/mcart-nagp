@@ -22,12 +22,17 @@ export class ProductlistComponent {
   searchKeyword!:string;
   filter: { gender: string, brands: string[] } = { gender: '', brands: [] };
   constructor(private productService:ProductApiService, private route:ActivatedRoute, private router: Router, private filterService: FilterService){
+    
   }
   ngOnInit(): void {
     this.filterService.getFilter().subscribe(newFilter => {
       this.filter = newFilter;
       // Apply filters when the filter changes
       this.applyFilters();
+    });
+
+    this.filterService.getSearchQuery().subscribe(searchQuery => {
+      this.getSearchResultsFromOpenSearch(searchQuery);
     });
 
     this.getResults();
@@ -37,12 +42,19 @@ export class ProductlistComponent {
     this.isLoading = true;
     this.productService.getProducts().subscribe((data)=>{
       this.isLoading = false;
-      this.products=data;
+      this.products = data
       this.filteredProducts = data;
     },error=>this.error=error.message)
     };
 
-   
+    getSearchResultsFromOpenSearch(searchQuery: string){
+      this.isLoading = true;
+      this.productService.searchProducts(searchQuery).subscribe((data)=>{
+        this.isLoading = false;
+        this.products = data;
+        this.filteredProducts = data;
+      },error=>this.error=error.message)
+    }
 
     onCardClick(product: any){
       const navigationDetails: string[] = ['/product'];

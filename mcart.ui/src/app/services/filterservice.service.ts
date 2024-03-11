@@ -8,6 +8,8 @@ export class FilterService {
 
   private filterSubject = new Subject<{ gender: string, brands: string[] }>();
 
+  private searchSubject: Subject<string> = new Subject<string>();
+
   setFilter(filter: { gender: string, brands: string[] }): void {
     console.log(filter.gender);
     console.log(filter.brands);
@@ -16,5 +18,14 @@ export class FilterService {
 
   getFilter(): Observable<{ gender: string, brands: string[] }> {
     return this.filterSubject.asObservable();
+  }
+
+  setSearchQuery(query: string): void {
+    console.log("swd")
+    this.searchSubject.next(query);
+  }
+
+  getSearchQuery(): Observable<string> {
+    return this.searchSubject.asObservable();
   }
 }

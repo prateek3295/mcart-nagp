@@ -1,21 +1,20 @@
 
   <nav class="nav" style="margin-top: 0;">
-    <div [routerLink]="'/products'" class="cart-container" style="cursor: pointer;">
+    <div [routerLink]="'/'" class="cart-container" style="cursor: pointer;">
       <span class="cart-text">My Cart</span>
       <i class="fas fa-shopping-cart fa-lg"></i>
     </div>
     <h2 style="display: none;">myShop</h2>
     <div class="nav-search">
-      <input type="text" placeholder="Search" style="padding: 8px;">
-      <button (onclick)="searchProducts()">
-        <!-- Replace 'fa-search' with the actual Font Awesome icon class for search -->
+      <input type="text" placeholder="Search" style="padding: 8px;" [(ngModel)]="searchQuery">
+      <button (click)="searchProducts()">
         <i class="fas fa-search"></i>
       </button>
     </div>
+    
     <ul>
       <li *ngIf="!isLoggedIn">
         <a routerLink="login">
-          <!-- Replace 'fa-sign-in-alt' with the actual Font Awesome icon class for sign in -->
           <i class="fas fa-sign-in-alt"></i> Sign in
         </a>
       </li>
@@ -24,19 +23,16 @@
       </li>
       <li *ngIf="isLoggedIn">
         <a href="#">
-          <!-- Replace 'fa-shopping-cart' with the actual Font Awesome icon class for cart -->
           <i class="fas fa-shopping-cart"></i> Cart
         </a>
       </li>
       <li *ngIf="isLoggedIn">
         <a routerLink="addproduct">
-          <!-- Replace 'fa-plus' with the actual Font Awesome icon class for add product -->
           <i class="fas fa-plus"></i> Add Product
         </a>
       </li>
       <li *ngIf="isLoggedIn">
         <a href='javascript:void(0)' (click)="logout()">
-          <!-- Replace 'fa-sign-out-alt' with the actual Font Awesome icon class for sign out -->
           <i class="fas fa-sign-out-alt"></i> Sign out
         </a>
       </li>

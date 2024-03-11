@@ -17,14 +17,18 @@ export class ProductFilterComponent {
 
 
   ngOnInit() {
+
+    this.filterService.getSearchQuery().subscribe(searchQuery => {
+      this.loadBrandList(searchQuery);
+    });
     // Fetch brands from your service or provide them as needed
-    this.loadBrandList()// Replace with your actual brand data
+    this.loadBrandList("")// Replace with your actual brand data
   }
 
 
 
-  loadBrandList() {
-    this.productService.getUniqueBrands().subscribe(
+  loadBrandList(searchQuery: string) {
+    this.productService.getUniqueBrands(searchQuery).subscribe(
       (data) => {
         this.brands = data;
         this.brands.forEach(brand => {

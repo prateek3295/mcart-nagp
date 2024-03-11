@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { TitleStrategy } from '@angular/router';
 import { fetchUserAttributes, getCurrentUser, signOut } from 'aws-amplify/auth';
 import  { Hub } from 'aws-amplify/utils';
+import { ProductApiService } from 'src/app/product-api.service';
+import { FilterService } from 'src/app/services/filterservice.service';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +14,8 @@ export class HeaderComponent {
  
   isLoggedIn=false;
   username:string = "";
-
-  constructor(){
+  searchQuery: string = '';
+  constructor(private filterService: FilterService){
   }
   
  
@@ -62,8 +64,8 @@ logout(){
     signOut();
   }
 
-  searchProducts(){
-
+searchProducts(): void{
+    this.filterService.setSearchQuery(this.searchQuery);;
   }
 
 }
