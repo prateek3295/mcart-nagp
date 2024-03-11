@@ -8,7 +8,7 @@ import { fetchAuthSession } from 'aws-amplify/auth';
 })
 export class ProductApiService {
 
-  private apiUrl = "https://localhost:58224/api/v1/catalog/" //"http://catalog-lb-563999524.us-east-1.elb.amazonaws.com/api/v1/catalog/" ;
+  private apiUrl = "http://catalog-lb-563999524.us-east-1.elb.amazonaws.com/api/v1/catalog/" ;
 
   constructor(private http: HttpClient) {}
 
