@@ -5,7 +5,7 @@
       <i class="fas fa-shopping-cart fa-lg"></i>
     </div>
     <h2 style="display: none;">myShop</h2>
-    <div class="nav-search">
+    <div class="nav-search" *ngIf="!hideSearchBox">
       <input type="text" placeholder="Search" style="padding: 8px;" [(ngModel)]="searchQuery">
       <button (click)="searchProducts()">
         <i class="fas fa-search"></i>

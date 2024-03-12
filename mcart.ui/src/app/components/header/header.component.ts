@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TitleStrategy } from '@angular/router';
+import { Router, TitleStrategy } from '@angular/router';
 import { fetchUserAttributes, getCurrentUser, signOut } from 'aws-amplify/auth';
 import  { Hub } from 'aws-amplify/utils';
 import { ProductApiService } from 'src/app/product-api.service';
@@ -15,13 +15,23 @@ export class HeaderComponent {
   isLoggedIn=false;
   username:string = "";
   searchQuery: string = '';
-  constructor(private filterService: FilterService){
+  hideSearchBox: boolean = false;
+  constructor(private filterService: FilterService, private router: Router){
+   
   }
   
  
 
   ngOnInit(){
     
+    this.router.events.subscribe((event) => {
+      console.log(this.router.url);
+      // Check the current route and hide the search box if needed
+      const currentRoute = this.router.url;
+
+      // Add conditions based on your route structure
+      this.hideSearchBox = currentRoute.includes('/product/');
+    });
     Hub.listen('auth', ({ payload }) => {
       switch (payload.event) {
         case 'signedIn':
